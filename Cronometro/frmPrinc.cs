@@ -18,6 +18,8 @@ namespace Cronometro
             InitializeComponent();
         }
 
+        List<string> Tiempos = new List<string>();
+
         private void frmPrinc_Load(object sender, EventArgs e)
         {
             ToolTip ttp = new ToolTip
@@ -34,15 +36,12 @@ namespace Cronometro
             ttp.SetToolTip(btnIniciar, "Inicia el conteo de tiempo.");
             ttp.SetToolTip(btnDetener, "Detiene el conteo de tiempo con el cliente.");
             ttp.SetToolTip(btnInter, "Pausa el conteo.");
-            //ttp.SetToolTip(btnReset, "Reinicia el tiempo del cronómetro.");
             ttp.SetToolTip(lstInterv, "Los tiempos seleccionados son copiados de forma automática.");
 
-            //txtTimeInfo.Text = Crono.ToString();
-            //txtTimeInfo.Font = new Font("DSEG7 Classic", 16, FontStyle.Regular);
             lblTimeInfo.Text = Crono.ToString();
             lblTimeInfo.Font = new Font("DSEG7 Classic", 16, FontStyle.Regular);
-            lblFondo.Font = lblTimeInfo.Font;
             lblVersion.Text = Application.ProductVersion;
+            this.Text += " v" +Application.ProductVersion;
 
             DateTime bkpDate = new DateTime();
             if (BackUp.Exists(out bkpDate))
@@ -181,7 +180,9 @@ namespace Cronometro
         private void AgregarTiempo(string Accion = "")
         {
             Accion = !string.IsNullOrEmpty(Accion) ? OptionManager.GetSeparator() + Accion : Accion;
-            lstInterv.Items.Add(FormatearTiempo(txtCliente.Text + Accion, Crono));            
+            string tiempo = FormatearTiempo(txtCliente.Text + Accion, Crono);
+            lstInterv.Items.Add(tiempo);
+            Tiempos.Add(tiempo.Replace(OptionManager.GetSeparator(),";"));
             lstInterv.SelectedIndex = lstInterv.Items.Count - 1;
         }
 
@@ -250,6 +251,15 @@ namespace Cronometro
         {
             frmSettings settingsDialog = new frmSettings();
             settingsDialog.ShowDialog(this);
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "Archivos separados por coma (*.csv)|*.csv";
+            saveDialog.FileName = $"timeExport_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
+            saveDialog.ShowDialog();
+            System.IO.File.WriteAllLines(saveDialog.FileName, Tiempos);
         }
     }
     

@@ -185,6 +185,7 @@
     <None Include="Resources\002-play-ON.png" />
     <None Include="Resources\003-stop-OFF.png" />
     <None Include="Resources\003-stop-ON.png" />
+    <None Include="Resources\csv.png" />
     <Content Include="time.ico" />
   </ItemGroup>
   <ItemGroup>

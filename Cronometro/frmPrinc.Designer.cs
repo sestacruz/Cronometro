@@ -42,7 +42,7 @@
             this.btnSettings = new System.Windows.Forms.Button();
             this.ntfyReminder = new System.Windows.Forms.NotifyIcon(this.components);
             this.lblTimeInfo = new System.Windows.Forms.Label();
-            this.lblFondo = new System.Windows.Forms.Label();
+            this.btnExport = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnIniciar
@@ -51,7 +51,7 @@
             this.btnIniciar.FlatAppearance.BorderSize = 0;
             this.btnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIniciar.Image = ((System.Drawing.Image)(resources.GetObject("btnIniciar.Image")));
-            this.btnIniciar.Location = new System.Drawing.Point(12, 80);
+            this.btnIniciar.Location = new System.Drawing.Point(15, 80);
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(40, 40);
             this.btnIniciar.TabIndex = 2;
@@ -64,7 +64,7 @@
             this.btnDetener.FlatAppearance.BorderSize = 0;
             this.btnDetener.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDetener.Image = global::Cronometro.Properties.Resources._003_stop_ON;
-            this.btnDetener.Location = new System.Drawing.Point(178, 80);
+            this.btnDetener.Location = new System.Drawing.Point(179, 80);
             this.btnDetener.Name = "btnDetener";
             this.btnDetener.Size = new System.Drawing.Size(40, 40);
             this.btnDetener.TabIndex = 4;
@@ -77,7 +77,7 @@
             this.btnInter.FlatAppearance.BorderSize = 0;
             this.btnInter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInter.Image = ((System.Drawing.Image)(resources.GetObject("btnInter.Image")));
-            this.btnInter.Location = new System.Drawing.Point(95, 80);
+            this.btnInter.Location = new System.Drawing.Point(97, 80);
             this.btnInter.Name = "btnInter";
             this.btnInter.Size = new System.Drawing.Size(40, 40);
             this.btnInter.TabIndex = 3;
@@ -99,7 +99,7 @@
             this.lstInterv.Location = new System.Drawing.Point(228, 16);
             this.lstInterv.Name = "lstInterv";
             this.lstInterv.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstInterv.Size = new System.Drawing.Size(258, 128);
+            this.lstInterv.Size = new System.Drawing.Size(258, 112);
             this.lstInterv.TabIndex = 5;
             this.lstInterv.SelectedIndexChanged += new System.EventHandler(this.lstInterv_SelectedIndexChanged);
             // 
@@ -142,12 +142,13 @@
             this.lblVersion.AutoSize = true;
             this.lblVersion.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVersion.ForeColor = System.Drawing.Color.White;
-            this.lblVersion.Location = new System.Drawing.Point(446, 167);
+            this.lblVersion.Location = new System.Drawing.Point(447, 181);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(41, 16);
             this.lblVersion.TabIndex = 8;
             this.lblVersion.Text = "1.0.0.0";
             this.lblVersion.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblVersion.Visible = false;
             // 
             // btnSettings
             // 
@@ -158,7 +159,7 @@
             this.btnSettings.ForeColor = System.Drawing.Color.White;
             this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
             this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettings.Location = new System.Drawing.Point(12, 132);
+            this.btnSettings.Location = new System.Drawing.Point(12, 138);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(100, 40);
             this.btnSettings.TabIndex = 9;
@@ -174,31 +175,40 @@
             // 
             // lblTimeInfo
             // 
-            this.lblTimeInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTimeInfo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimeInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.lblTimeInfo.Location = new System.Drawing.Point(57, 49);
+            this.lblTimeInfo.Location = new System.Drawing.Point(15, 36);
             this.lblTimeInfo.Name = "lblTimeInfo";
-            this.lblTimeInfo.Size = new System.Drawing.Size(140, 25);
+            this.lblTimeInfo.Size = new System.Drawing.Size(207, 43);
             this.lblTimeInfo.TabIndex = 10;
             this.lblTimeInfo.Text = "00:00:00";
+            this.lblTimeInfo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblFondo
+            // btnExport
             // 
-            this.lblFondo.AutoSize = true;
-            this.lblFondo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFondo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.lblFondo.Location = new System.Drawing.Point(57, 49);
-            this.lblFondo.Name = "lblFondo";
-            this.lblFondo.Size = new System.Drawing.Size(96, 25);
-            this.lblFondo.TabIndex = 11;
-            this.lblFondo.Text = "88:88:88";
+            this.btnExport.BackColor = System.Drawing.Color.Gray;
+            this.btnExport.FlatAppearance.BorderSize = 0;
+            this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExport.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExport.ForeColor = System.Drawing.Color.White;
+            this.btnExport.Image = global::Cronometro.Properties.Resources.csv;
+            this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExport.Location = new System.Drawing.Point(383, 138);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(100, 40);
+            this.btnExport.TabIndex = 11;
+            this.btnExport.Text = "Exportar";
+            this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnExport.UseVisualStyleBackColor = false;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // frmPrinc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(495, 185);
+            this.ClientSize = new System.Drawing.Size(495, 195);
+            this.Controls.Add(this.btnExport);
             this.Controls.Add(this.lblTimeInfo);
             this.Controls.Add(this.btnSettings);
             this.Controls.Add(this.lblVersion);
@@ -208,7 +218,6 @@
             this.Controls.Add(this.btnInter);
             this.Controls.Add(this.btnDetener);
             this.Controls.Add(this.btnIniciar);
-            this.Controls.Add(this.lblFondo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(422, 184);
             this.Name = "frmPrinc";
@@ -234,8 +243,7 @@
         private System.Windows.Forms.Button btnSettings;
         private System.Windows.Forms.NotifyIcon ntfyReminder;
         private System.Windows.Forms.Label lblTimeInfo;
-        //private WinFormsControls.TransparentLabel lblTimeInfo;
-        private System.Windows.Forms.Label lblFondo;
+        private System.Windows.Forms.Button btnExport;
     }
 }
 
