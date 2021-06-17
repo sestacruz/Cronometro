@@ -5,6 +5,7 @@ using Cronometro.Options;
 using Cronometro.Models;
 using System.Linq;
 using System.Collections.Generic;
+using Tulpep.NotificationWindow;
 
 namespace Cronometro
 {
@@ -39,7 +40,7 @@ namespace Cronometro
             ttp.SetToolTip(lstInterv, "Los tiempos seleccionados son copiados de forma automática.");
 
             lblTimeInfo.Text = Crono.ToString();
-            lblTimeInfo.Font = new Font("DSEG7 Classic", 16, FontStyle.Regular);
+            //lblTimeInfo.Font = new Font("DSEG7 Classic", 16, FontStyle.Regular);
             lblVersion.Text = Application.ProductVersion;
             this.Text += " v" +Application.ProductVersion;
 
@@ -58,6 +59,19 @@ namespace Cronometro
 
         private void btnIniciar_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtCliente.Text))
+            {
+                MessageBox.Show("El campo de cliente no fue cargado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtTarea.Text))
+            {
+                var response = MessageBox.Show("El campo de tarea no fue cargado. ¿Desea continuar de todos modos?", "Aviso", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (response == DialogResult.No)
+                    return;
+            }
+
             if (!tmrSync.Enabled)
             {
                 tmrSync.Enabled = true;
@@ -82,7 +96,7 @@ namespace Cronometro
                 //txtTimeInfo.Text = Crono.ToString();
                 lblTimeInfo.Text = Crono.ToString();
                 Crono.Stop();
-                AgregarTiempo();
+                AgregarTiempo(txtTarea.Text);
                 //btnReset.PerformClick();
                 Crono.ResetValue();
                 //txtTimeInfo.Text = Crono.ToString();
@@ -136,15 +150,33 @@ namespace Cronometro
             {
                 if (Crono.Value().Minutes - initialTime.Minutes >= OptionManager.GetPopUpTime())
                 {
-                    btnInter.PerformClick();
-                    ntfyReminder.Text = "Cronómetro";
-                    //ntfyReminder.Visible = true;
-                    ntfyReminder.ShowBalloonTip(10000, "¡Hola!", "¿Estás ahí? Acordate de frenar el cronómetro si no lo estás usando.", ToolTipIcon.Info);
-                    this.WindowState = FormWindowState.Minimized;
-                    this.WindowState = FormWindowState.Normal;
-                    //MessageBox.Show("¿Estás ahí? El cronómetro está pausado hasta que me avises.", "¡Hola!", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                    initialTime = Crono.Value();
-                    btnIniciar.PerformClick();
+                    var popupNotifier = new PopupNotifier();
+                    popupNotifier.TitleText = "Cronometro";
+                    popupNotifier.ContentText = "¿Estás ahí? Acordate de frenar el cronómetro si no lo estás usando.";
+                    popupNotifier.ShowOptionsButton = false;
+                    popupNotifier.ShowGrip = false;
+                    popupNotifier.Delay = 10000;
+                    popupNotifier.AnimationInterval = 1;
+                    popupNotifier.AnimationDuration = 300;
+                    popupNotifier.ContentPadding = new Padding(20);
+                    popupNotifier.TitlePadding = new Padding(0);
+                    popupNotifier.ImagePadding = new Padding(20);
+                    popupNotifier.Image = Properties.Resources.time_48;
+                    popupNotifier.BodyColor = Color.Black;
+                    popupNotifier.TitleColor = Color.White;
+                    popupNotifier.ContentColor = Color.Gray;
+                    popupNotifier.IsRightToLeft = false;
+                    popupNotifier.Popup();
+
+                    //btnInter.PerformClick();
+                    //ntfyReminder.Text = "Cronómetro";
+                    ////ntfyReminder.Visible = true;
+                    //ntfyReminder.ShowBalloonTip(10000, "¡Hola!", "¿Estás ahí? Acordate de frenar el cronómetro si no lo estás usando.", ToolTipIcon.Info);
+                    //this.WindowState = FormWindowState.Minimized;
+                    //this.WindowState = FormWindowState.Normal;
+                    ////MessageBox.Show("¿Estás ahí? El cronómetro está pausado hasta que me avises.", "¡Hola!", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                    //initialTime = Crono.Value();
+                    //btnIniciar.PerformClick();
                 }
             } 
             if(OptionManager.GetBackUp())
@@ -177,10 +209,10 @@ namespace Cronometro
             Clipboard.SetText(data);
         }
 
-        private void AgregarTiempo(string Accion = "")
+        private void AgregarTiempo(string tarea = "")
         {
-            Accion = !string.IsNullOrEmpty(Accion) ? OptionManager.GetSeparator() + Accion : Accion;
-            string tiempo = FormatearTiempo(txtCliente.Text + Accion, Crono);
+            tarea = !string.IsNullOrEmpty(tarea) ? OptionManager.GetSeparator() + tarea : tarea;
+            string tiempo = FormatearTiempo(txtCliente.Text + tarea, Crono);
             lstInterv.Items.Add(tiempo);
             Tiempos.Add(tiempo.Replace(OptionManager.GetSeparator(),";"));
             lstInterv.SelectedIndex = lstInterv.Items.Count - 1;
@@ -195,17 +227,17 @@ namespace Cronometro
                     if (string.IsNullOrEmpty(texto))
                         return (string.Concat(DateTime.Now.ToString("dd/MM/yyyy"), separator, crono.ToString()));
                     else
-                        return (string.Concat(DateTime.Now.ToString("dd/MM/yyyy"), separator, txtCliente.Text, separator, Crono.ToString()));
+                        return (string.Concat(DateTime.Now.ToString("dd/MM/yyyy"), separator, texto, separator, Crono.ToString()));
                 case (int)OptionManager.units.Decimal:
                     if (string.IsNullOrEmpty(texto))
                         return (string.Concat(DateTime.Now.ToString("dd/MM/yyyy"), separator, crono.ToDecimalValue()));
                     else
-                        return (string.Concat(DateTime.Now.ToString("dd/MM/yyyy"), separator, txtCliente.Text, separator, Crono.ToDecimalValue()));
+                        return (string.Concat(DateTime.Now.ToString("dd/MM/yyyy"), separator, texto, separator, Crono.ToDecimalValue()));
                 case (int)OptionManager.units.Both:
                     if (string.IsNullOrEmpty(texto))
                         return (string.Concat(DateTime.Now.ToString("dd/MM/yyyy"), separator, crono.ToString(), separator, Crono.ToDecimalValue()));
                     else
-                        return (string.Concat(DateTime.Now.ToString("dd/MM/yyyy"), separator, txtCliente.Text, separator, Crono.ToString(), separator, Crono.ToDecimalValue()));
+                        return (string.Concat(DateTime.Now.ToString("dd/MM/yyyy"), separator, texto, separator, Crono.ToString(), separator, Crono.ToDecimalValue()));
                 default:
                     return string.Empty;
             }

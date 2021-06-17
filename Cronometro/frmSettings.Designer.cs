@@ -40,22 +40,20 @@
             this.txtMin = new System.Windows.Forms.TextBox();
             this.grpReminder = new System.Windows.Forms.GroupBox();
             this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
-            this.grpColor = new System.Windows.Forms.GroupBox();
-            this.btnElegir = new System.Windows.Forms.Button();
-            this.lblEjemplo = new System.Windows.Forms.Label();
-            this.lblDisp = new System.Windows.Forms.Label();
             this.colorDiag = new System.Windows.Forms.ColorDialog();
             this.grpBkp = new System.Windows.Forms.GroupBox();
             this.txtBkp = new System.Windows.Forms.TextBox();
             this.chkBkp = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnElegir = new System.Windows.Forms.Button();
+            this.lblEjemplo = new System.Windows.Forms.Label();
+            this.lblDisp = new System.Windows.Forms.Label();
             this.txtSeparator = new System.Windows.Forms.TextBox();
             this.lblSeparator = new System.Windows.Forms.Label();
             this.grpUni.SuspendLayout();
             this.grpReminder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
-            this.grpColor.SuspendLayout();
             this.grpBkp.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -135,7 +133,7 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Location = new System.Drawing.Point(12, 416);
+            this.btnCancel.Location = new System.Drawing.Point(12, 373);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 2;
@@ -150,7 +148,7 @@
             this.brnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.brnSave.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.brnSave.ForeColor = System.Drawing.Color.White;
-            this.brnSave.Location = new System.Drawing.Point(155, 416);
+            this.brnSave.Location = new System.Drawing.Point(155, 373);
             this.brnSave.Name = "brnSave";
             this.brnSave.Size = new System.Drawing.Size(75, 23);
             this.brnSave.TabIndex = 3;
@@ -166,7 +164,7 @@
             this.lblMin.Location = new System.Drawing.Point(6, 49);
             this.lblMin.Name = "lblMin";
             this.lblMin.Size = new System.Drawing.Size(144, 16);
-            this.lblMin.TabIndex = 4;
+            this.lblMin.TabIndex = 2;
             this.lblMin.Text = "Recordar cada          min.";
             // 
             // txtMin
@@ -179,7 +177,7 @@
             this.txtMin.MaxLength = 3;
             this.txtMin.Name = "txtMin";
             this.txtMin.Size = new System.Drawing.Size(24, 14);
-            this.txtMin.TabIndex = 5;
+            this.txtMin.TabIndex = 0;
             this.txtMin.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMin_KeyPress);
             // 
             // grpReminder
@@ -200,51 +198,6 @@
             // 
             this.fileSystemWatcher1.EnableRaisingEvents = true;
             this.fileSystemWatcher1.SynchronizingObject = this;
-            // 
-            // grpColor
-            // 
-            this.grpColor.Controls.Add(this.btnElegir);
-            this.grpColor.Controls.Add(this.lblEjemplo);
-            this.grpColor.Controls.Add(this.lblDisp);
-            this.grpColor.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpColor.ForeColor = System.Drawing.Color.White;
-            this.grpColor.Location = new System.Drawing.Point(12, 332);
-            this.grpColor.Name = "grpColor";
-            this.grpColor.Size = new System.Drawing.Size(218, 65);
-            this.grpColor.TabIndex = 7;
-            this.grpColor.TabStop = false;
-            this.grpColor.Text = "Color";
-            // 
-            // btnElegir
-            // 
-            this.btnElegir.BackColor = System.Drawing.Color.Gray;
-            this.btnElegir.FlatAppearance.BorderSize = 0;
-            this.btnElegir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnElegir.Location = new System.Drawing.Point(105, 24);
-            this.btnElegir.Name = "btnElegir";
-            this.btnElegir.Size = new System.Drawing.Size(75, 23);
-            this.btnElegir.TabIndex = 2;
-            this.btnElegir.Text = "Elegir";
-            this.btnElegir.UseVisualStyleBackColor = false;
-            this.btnElegir.Click += new System.EventHandler(this.btnElegir_Click);
-            // 
-            // lblEjemplo
-            // 
-            this.lblEjemplo.AutoSize = true;
-            this.lblEjemplo.Location = new System.Drawing.Point(59, 24);
-            this.lblEjemplo.Name = "lblEjemplo";
-            this.lblEjemplo.Size = new System.Drawing.Size(14, 16);
-            this.lblEjemplo.TabIndex = 1;
-            this.lblEjemplo.Text = "8";
-            // 
-            // lblDisp
-            // 
-            this.lblDisp.AutoSize = true;
-            this.lblDisp.Location = new System.Drawing.Point(9, 27);
-            this.lblDisp.Name = "lblDisp";
-            this.lblDisp.Size = new System.Drawing.Size(46, 16);
-            this.lblDisp.TabIndex = 0;
-            this.lblDisp.Text = "Display";
             // 
             // grpBkp
             // 
@@ -298,16 +251,50 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnElegir);
+            this.groupBox1.Controls.Add(this.lblEjemplo);
+            this.groupBox1.Controls.Add(this.lblDisp);
             this.groupBox1.Controls.Add(this.txtSeparator);
             this.groupBox1.Controls.Add(this.lblSeparator);
             this.groupBox1.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(12, 260);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(218, 66);
+            this.groupBox1.Size = new System.Drawing.Size(218, 94);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "BackUp actividad";
+            this.groupBox1.Text = "Formato";
+            // 
+            // btnElegir
+            // 
+            this.btnElegir.BackColor = System.Drawing.Color.Gray;
+            this.btnElegir.FlatAppearance.BorderSize = 0;
+            this.btnElegir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnElegir.Location = new System.Drawing.Point(137, 58);
+            this.btnElegir.Name = "btnElegir";
+            this.btnElegir.Size = new System.Drawing.Size(75, 23);
+            this.btnElegir.TabIndex = 8;
+            this.btnElegir.Text = "Elegir Color";
+            this.btnElegir.UseVisualStyleBackColor = false;
+            this.btnElegir.Click += new System.EventHandler(this.btnElegir_Click);
+            // 
+            // lblEjemplo
+            // 
+            this.lblEjemplo.AutoSize = true;
+            this.lblEjemplo.Location = new System.Drawing.Point(68, 58);
+            this.lblEjemplo.Name = "lblEjemplo";
+            this.lblEjemplo.Size = new System.Drawing.Size(14, 16);
+            this.lblEjemplo.TabIndex = 7;
+            this.lblEjemplo.Text = "8";
+            // 
+            // lblDisp
+            // 
+            this.lblDisp.AutoSize = true;
+            this.lblDisp.Location = new System.Drawing.Point(9, 58);
+            this.lblDisp.Name = "lblDisp";
+            this.lblDisp.Size = new System.Drawing.Size(46, 16);
+            this.lblDisp.TabIndex = 6;
+            this.lblDisp.Text = "Display";
             // 
             // txtSeparator
             // 
@@ -337,10 +324,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(242, 449);
+            this.ClientSize = new System.Drawing.Size(242, 410);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grpBkp);
-            this.Controls.Add(this.grpColor);
             this.Controls.Add(this.grpReminder);
             this.Controls.Add(this.brnSave);
             this.Controls.Add(this.btnCancel);
@@ -359,8 +345,6 @@
             this.grpReminder.ResumeLayout(false);
             this.grpReminder.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
-            this.grpColor.ResumeLayout(false);
-            this.grpColor.PerformLayout();
             this.grpBkp.ResumeLayout(false);
             this.grpBkp.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -382,11 +366,7 @@
         private System.Windows.Forms.CheckBox chkBoth;
         private System.Windows.Forms.GroupBox grpReminder;
         private System.IO.FileSystemWatcher fileSystemWatcher1;
-        private System.Windows.Forms.GroupBox grpColor;
-        private System.Windows.Forms.Label lblEjemplo;
-        private System.Windows.Forms.Label lblDisp;
         private System.Windows.Forms.ColorDialog colorDiag;
-        private System.Windows.Forms.Button btnElegir;
         private System.Windows.Forms.GroupBox grpBkp;
         private System.Windows.Forms.TextBox txtBkp;
         private System.Windows.Forms.CheckBox chkBkp;
@@ -394,5 +374,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtSeparator;
         private System.Windows.Forms.Label lblSeparator;
+        private System.Windows.Forms.Button btnElegir;
+        private System.Windows.Forms.Label lblEjemplo;
+        private System.Windows.Forms.Label lblDisp;
     }
 }

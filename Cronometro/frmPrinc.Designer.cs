@@ -43,6 +43,8 @@
             this.ntfyReminder = new System.Windows.Forms.NotifyIcon(this.components);
             this.lblTimeInfo = new System.Windows.Forms.Label();
             this.btnExport = new System.Windows.Forms.Button();
+            this.lblTarea = new System.Windows.Forms.Label();
+            this.txtTarea = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnIniciar
@@ -51,7 +53,7 @@
             this.btnIniciar.FlatAppearance.BorderSize = 0;
             this.btnIniciar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIniciar.Image = ((System.Drawing.Image)(resources.GetObject("btnIniciar.Image")));
-            this.btnIniciar.Location = new System.Drawing.Point(15, 80);
+            this.btnIniciar.Location = new System.Drawing.Point(15, 115);
             this.btnIniciar.Name = "btnIniciar";
             this.btnIniciar.Size = new System.Drawing.Size(40, 40);
             this.btnIniciar.TabIndex = 2;
@@ -64,7 +66,7 @@
             this.btnDetener.FlatAppearance.BorderSize = 0;
             this.btnDetener.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDetener.Image = global::Cronometro.Properties.Resources._003_stop_ON;
-            this.btnDetener.Location = new System.Drawing.Point(179, 80);
+            this.btnDetener.Location = new System.Drawing.Point(179, 115);
             this.btnDetener.Name = "btnDetener";
             this.btnDetener.Size = new System.Drawing.Size(40, 40);
             this.btnDetener.TabIndex = 4;
@@ -77,7 +79,7 @@
             this.btnInter.FlatAppearance.BorderSize = 0;
             this.btnInter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInter.Image = ((System.Drawing.Image)(resources.GetObject("btnInter.Image")));
-            this.btnInter.Location = new System.Drawing.Point(97, 80);
+            this.btnInter.Location = new System.Drawing.Point(97, 115);
             this.btnInter.Name = "btnInter";
             this.btnInter.Size = new System.Drawing.Size(40, 40);
             this.btnInter.TabIndex = 3;
@@ -99,7 +101,7 @@
             this.lstInterv.Location = new System.Drawing.Point(228, 16);
             this.lstInterv.Name = "lstInterv";
             this.lstInterv.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lstInterv.Size = new System.Drawing.Size(258, 112);
+            this.lstInterv.Size = new System.Drawing.Size(377, 144);
             this.lstInterv.TabIndex = 5;
             this.lstInterv.SelectedIndexChanged += new System.EventHandler(this.lstInterv_SelectedIndexChanged);
             // 
@@ -114,10 +116,10 @@
             this.txtCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCliente.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCliente.ForeColor = System.Drawing.Color.White;
-            this.txtCliente.Location = new System.Drawing.Point(61, 16);
+            this.txtCliente.Location = new System.Drawing.Point(61, 20);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(158, 14);
-            this.txtCliente.TabIndex = 1;
+            this.txtCliente.TabIndex = 0;
             this.txtCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCliente_KeyDown);
             // 
             // lblCliente
@@ -127,9 +129,9 @@
             this.lblCliente.ForeColor = System.Drawing.Color.White;
             this.lblCliente.Location = new System.Drawing.Point(12, 18);
             this.lblCliente.Name = "lblCliente";
-            this.lblCliente.Size = new System.Drawing.Size(49, 16);
+            this.lblCliente.Size = new System.Drawing.Size(46, 16);
             this.lblCliente.TabIndex = 7;
-            this.lblCliente.Text = "Cliente:";
+            this.lblCliente.Text = "Cliente";
             // 
             // tmrPause
             // 
@@ -142,7 +144,7 @@
             this.lblVersion.AutoSize = true;
             this.lblVersion.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblVersion.ForeColor = System.Drawing.Color.White;
-            this.lblVersion.Location = new System.Drawing.Point(447, 181);
+            this.lblVersion.Location = new System.Drawing.Point(566, 211);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(41, 16);
             this.lblVersion.TabIndex = 8;
@@ -159,10 +161,10 @@
             this.btnSettings.ForeColor = System.Drawing.Color.White;
             this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
             this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettings.Location = new System.Drawing.Point(12, 138);
+            this.btnSettings.Location = new System.Drawing.Point(12, 168);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Size = new System.Drawing.Size(100, 40);
-            this.btnSettings.TabIndex = 9;
+            this.btnSettings.TabIndex = 7;
             this.btnSettings.Text = "Opciones";
             this.btnSettings.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSettings.UseVisualStyleBackColor = false;
@@ -177,7 +179,7 @@
             // 
             this.lblTimeInfo.Font = new System.Drawing.Font("Arial Rounded MT Bold", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTimeInfo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(47)))), ((int)(((byte)(47)))));
-            this.lblTimeInfo.Location = new System.Drawing.Point(15, 36);
+            this.lblTimeInfo.Location = new System.Drawing.Point(15, 71);
             this.lblTimeInfo.Name = "lblTimeInfo";
             this.lblTimeInfo.Size = new System.Drawing.Size(207, 43);
             this.lblTimeInfo.TabIndex = 10;
@@ -186,6 +188,7 @@
             // 
             // btnExport
             // 
+            this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnExport.BackColor = System.Drawing.Color.Gray;
             this.btnExport.FlatAppearance.BorderSize = 0;
             this.btnExport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -193,21 +196,45 @@
             this.btnExport.ForeColor = System.Drawing.Color.White;
             this.btnExport.Image = global::Cronometro.Properties.Resources.csv;
             this.btnExport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExport.Location = new System.Drawing.Point(383, 138);
+            this.btnExport.Location = new System.Drawing.Point(505, 168);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(100, 40);
-            this.btnExport.TabIndex = 11;
+            this.btnExport.TabIndex = 6;
             this.btnExport.Text = "Exportar";
             this.btnExport.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnExport.UseVisualStyleBackColor = false;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // lblTarea
+            // 
+            this.lblTarea.AutoSize = true;
+            this.lblTarea.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTarea.ForeColor = System.Drawing.Color.White;
+            this.lblTarea.Location = new System.Drawing.Point(12, 39);
+            this.lblTarea.Name = "lblTarea";
+            this.lblTarea.Size = new System.Drawing.Size(39, 16);
+            this.lblTarea.TabIndex = 13;
+            this.lblTarea.Text = "Tarea";
+            // 
+            // txtTarea
+            // 
+            this.txtTarea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtTarea.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtTarea.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTarea.ForeColor = System.Drawing.Color.White;
+            this.txtTarea.Location = new System.Drawing.Point(61, 41);
+            this.txtTarea.Name = "txtTarea";
+            this.txtTarea.Size = new System.Drawing.Size(158, 14);
+            this.txtTarea.TabIndex = 1;
             // 
             // frmPrinc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DimGray;
-            this.ClientSize = new System.Drawing.Size(495, 195);
+            this.ClientSize = new System.Drawing.Size(614, 225);
+            this.Controls.Add(this.lblTarea);
+            this.Controls.Add(this.txtTarea);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.lblTimeInfo);
             this.Controls.Add(this.btnSettings);
@@ -244,6 +271,8 @@
         private System.Windows.Forms.NotifyIcon ntfyReminder;
         private System.Windows.Forms.Label lblTimeInfo;
         private System.Windows.Forms.Button btnExport;
+        private System.Windows.Forms.Label lblTarea;
+        private System.Windows.Forms.TextBox txtTarea;
     }
 }
 
