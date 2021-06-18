@@ -226,6 +226,7 @@
             this.txtTarea.Name = "txtTarea";
             this.txtTarea.Size = new System.Drawing.Size(158, 14);
             this.txtTarea.TabIndex = 1;
+            this.txtTarea.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTarea_KeyDown);
             // 
             // frmPrinc
             // 

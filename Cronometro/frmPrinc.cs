@@ -102,6 +102,7 @@ namespace Cronometro
                 //txtTimeInfo.Text = Crono.ToString();
                 lblTimeInfo.Text = Crono.ToString();
                 txtCliente.Text = string.Empty;
+                txtTarea.Text = string.Empty;
                 btnIniciar.Image = Properties.Resources._002_play_OFF;
                 btnInter.Image = Properties.Resources._001_pause_OFF;
                 btnDetener.Image = Properties.Resources._003_stop_ON;
@@ -292,6 +293,12 @@ namespace Cronometro
             saveDialog.FileName = $"timeExport_{DateTime.Now:yyyyMMdd_HHmmss}.csv";
             saveDialog.ShowDialog();
             System.IO.File.WriteAllLines(saveDialog.FileName, Tiempos);
+        }
+
+        private void txtTarea_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                btnIniciar.PerformClick();
         }
     }
     
