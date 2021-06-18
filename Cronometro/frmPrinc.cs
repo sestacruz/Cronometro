@@ -84,6 +84,12 @@ namespace Cronometro
                 lblTimeInfo.ForeColor = OptionManager.GetDisplayColor();
                 lblTimeInfo.Visible = true;
                 tmrPause.Enabled = false;
+
+                if (OptionManager.GetPopUp())
+                {
+                    tmrNotify.Interval = OptionManager.GetPopUpTime() * 60000; //Minutes to milliseconds 
+                    tmrNotify.Enabled = true;
+                }
             }
         }
 
@@ -93,6 +99,7 @@ namespace Cronometro
             {
                 tmrSync.Enabled = false;
                 tmrPause.Enabled = false;
+                tmrNotify.Enabled = false;
                 //txtTimeInfo.Text = Crono.ToString();
                 lblTimeInfo.Text = Crono.ToString();
                 Crono.Stop();
@@ -147,39 +154,6 @@ namespace Cronometro
         {
             //txtTimeInfo.Text = Crono.ToString();
             lblTimeInfo.Text = Crono.ToString();
-            if (OptionManager.GetPopUp())
-            {
-                if (Crono.Value().Minutes - initialTime.Minutes >= OptionManager.GetPopUpTime())
-                {
-                    var popupNotifier = new PopupNotifier();
-                    popupNotifier.TitleText = "Cronometro";
-                    popupNotifier.ContentText = "¿Estás ahí? Acordate de frenar el cronómetro si no lo estás usando.";
-                    popupNotifier.ShowOptionsButton = false;
-                    popupNotifier.ShowGrip = false;
-                    popupNotifier.Delay = 10000;
-                    popupNotifier.AnimationInterval = 1;
-                    popupNotifier.AnimationDuration = 300;
-                    popupNotifier.ContentPadding = new Padding(20);
-                    popupNotifier.TitlePadding = new Padding(0);
-                    popupNotifier.ImagePadding = new Padding(20);
-                    popupNotifier.Image = Properties.Resources.time_48;
-                    popupNotifier.BodyColor = Color.Black;
-                    popupNotifier.TitleColor = Color.White;
-                    popupNotifier.ContentColor = Color.Gray;
-                    popupNotifier.IsRightToLeft = false;
-                    popupNotifier.Popup();
-
-                    //btnInter.PerformClick();
-                    //ntfyReminder.Text = "Cronómetro";
-                    ////ntfyReminder.Visible = true;
-                    //ntfyReminder.ShowBalloonTip(10000, "¡Hola!", "¿Estás ahí? Acordate de frenar el cronómetro si no lo estás usando.", ToolTipIcon.Info);
-                    //this.WindowState = FormWindowState.Minimized;
-                    //this.WindowState = FormWindowState.Normal;
-                    ////MessageBox.Show("¿Estás ahí? El cronómetro está pausado hasta que me avises.", "¡Hola!", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                    //initialTime = Crono.Value();
-                    //btnIniciar.PerformClick();
-                }
-            } 
             if(OptionManager.GetBackUp())
             {
                 if (Crono.Value().Minutes - initialTime.Minutes >= OptionManager.GetBackUpTime())
@@ -299,6 +273,27 @@ namespace Cronometro
         {
             if (e.KeyCode == Keys.Enter)
                 btnIniciar.PerformClick();
+        }
+
+        private void tmrNotify_Tick(object sender, EventArgs e)
+        {
+            var popupNotifier = new PopupNotifier();
+            popupNotifier.TitleText = "Cronometro";
+            popupNotifier.ContentText = "¿Estás ahí? Acordate de frenar el cronómetro si no lo estás usando.";
+            popupNotifier.ShowOptionsButton = false;
+            popupNotifier.ShowGrip = false;
+            popupNotifier.Delay = 10000;
+            popupNotifier.AnimationInterval = 1;
+            popupNotifier.AnimationDuration = 300;
+            popupNotifier.ContentPadding = new Padding(20);
+            popupNotifier.TitlePadding = new Padding(0);
+            popupNotifier.ImagePadding = new Padding(20);
+            popupNotifier.Image = Properties.Resources.time_48;
+            popupNotifier.BodyColor = Color.Black;
+            popupNotifier.TitleColor = Color.White;
+            popupNotifier.ContentColor = Color.Gray;
+            popupNotifier.IsRightToLeft = false;
+            popupNotifier.Popup();
         }
     }
     

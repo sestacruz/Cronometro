@@ -45,6 +45,7 @@
             this.btnExport = new System.Windows.Forms.Button();
             this.lblTarea = new System.Windows.Forms.Label();
             this.txtTarea = new System.Windows.Forms.TextBox();
+            this.tmrNotify = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // btnIniciar
@@ -228,6 +229,10 @@
             this.txtTarea.TabIndex = 1;
             this.txtTarea.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTarea_KeyDown);
             // 
+            // tmrNotify
+            // 
+            this.tmrNotify.Tick += new System.EventHandler(this.tmrNotify_Tick);
+            // 
             // frmPrinc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -274,6 +279,7 @@
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.Label lblTarea;
         private System.Windows.Forms.TextBox txtTarea;
+        private System.Windows.Forms.Timer tmrNotify;
     }
 }
 

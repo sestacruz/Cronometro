@@ -3,10 +3,10 @@
   <Profiles />
   <Settings>
     <Setting Name="displayUnit" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">60</Value>
+      <Value Profile="(Default)">160</Value>
     </Setting>
     <Setting Name="popUp" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="popUpTime" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">1</Value>
