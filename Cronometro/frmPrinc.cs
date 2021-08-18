@@ -295,6 +295,11 @@ namespace Cronometro
             popupNotifier.IsRightToLeft = false;
             popupNotifier.Popup();
         }
+
+        private void txtTarea_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
     
 }

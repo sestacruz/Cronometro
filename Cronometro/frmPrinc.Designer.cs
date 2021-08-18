@@ -117,10 +117,10 @@
             this.txtCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCliente.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCliente.ForeColor = System.Drawing.Color.White;
-            this.txtCliente.Location = new System.Drawing.Point(61, 20);
+            this.txtCliente.Location = new System.Drawing.Point(61, 41);
             this.txtCliente.Name = "txtCliente";
             this.txtCliente.Size = new System.Drawing.Size(158, 14);
-            this.txtCliente.TabIndex = 0;
+            this.txtCliente.TabIndex = 1;
             this.txtCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCliente_KeyDown);
             // 
             // lblCliente
@@ -128,7 +128,7 @@
             this.lblCliente.AutoSize = true;
             this.lblCliente.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCliente.ForeColor = System.Drawing.Color.White;
-            this.lblCliente.Location = new System.Drawing.Point(12, 18);
+            this.lblCliente.Location = new System.Drawing.Point(12, 39);
             this.lblCliente.Name = "lblCliente";
             this.lblCliente.Size = new System.Drawing.Size(46, 16);
             this.lblCliente.TabIndex = 7;
@@ -211,7 +211,7 @@
             this.lblTarea.AutoSize = true;
             this.lblTarea.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTarea.ForeColor = System.Drawing.Color.White;
-            this.lblTarea.Location = new System.Drawing.Point(12, 39);
+            this.lblTarea.Location = new System.Drawing.Point(12, 19);
             this.lblTarea.Name = "lblTarea";
             this.lblTarea.Size = new System.Drawing.Size(39, 16);
             this.lblTarea.TabIndex = 13;
@@ -223,10 +223,11 @@
             this.txtTarea.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTarea.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTarea.ForeColor = System.Drawing.Color.White;
-            this.txtTarea.Location = new System.Drawing.Point(61, 41);
+            this.txtTarea.Location = new System.Drawing.Point(61, 21);
             this.txtTarea.Name = "txtTarea";
             this.txtTarea.Size = new System.Drawing.Size(158, 14);
-            this.txtTarea.TabIndex = 1;
+            this.txtTarea.TabIndex = 0;
+            this.txtTarea.TextChanged += new System.EventHandler(this.txtTarea_TextChanged);
             this.txtTarea.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTarea_KeyDown);
             // 
             // tmrNotify
